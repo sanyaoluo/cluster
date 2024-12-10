@@ -1,0 +1,30 @@
+apiVersion: v1
+baseDomain: example.com
+compute:
+- name: worker
+  replicas: 3
+controlPlane:
+  name: master
+  replicas: 3
+metadata:
+  name: ocp4-vmware
+networking:
+  networkType: OVNKubernetes
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  vsphere:
+    vCenter: vcenter.example.com
+    username: administrator@vsphere.local
+    password: VMwarePass123
+    datacenter: Datacenter
+    defaultDatastore: Datastore
+    network: VM_Network
+    apiVIP: 192.168.1.100
+    ingressVIP: 192.168.1.101
+pullSecret: '{"auths": {...}}'
+sshKey: |
+  ssh-rsa AAAAB3...user@domain

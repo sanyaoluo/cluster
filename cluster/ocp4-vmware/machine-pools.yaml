@@ -1,0 +1,17 @@
+apiVersion: hive.openshift.io/v1
+kind: MachinePool
+metadata:
+  name: ocp4-vmware-workers
+  namespace: clusters
+spec:
+  clusterDeploymentRef:
+    name: ocp4-vmware
+  name: worker
+  platform:
+    vsphere:
+      coresPerSocket: 4
+      memoryMB: 16384
+      numCPUs: 4
+      osDisk:
+        diskSizeGB: 120
+  replicas: 3

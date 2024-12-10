@@ -1,0 +1,27 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: ocp4-vmware
+  namespace: clusters
+spec:
+  baseDomain: example.com
+  clusterName: ocp4-vmware
+  platform:
+    vsphere:
+      vCenter: vcenter.example.com
+      username: administrator@vsphere.local
+      password: VMwarePass123
+      datacenter: Datacenter
+      defaultDatastore: Datastore
+      network: VM_Network
+      apiVIP: 192.168.1.100
+      ingressVIP: 192.168.1.101
+  pullSecretRef:
+    name: pull-secret
+  provisioning:
+    installConfigSecretRef:
+      name: install-config
+  clusterInstallRef:
+    group: hive.openshift.io
+    kind: ClusterInstall
+    name: ocp4-install
