@@ -1,30 +1,53 @@
 apiVersion: v1
-baseDomain: example.com
+baseDomain: smoad.net
 compute:
-- name: worker
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  platform: 
+    vsphere:
+      cpus: 4
+      coresPerSocket: 2
+      memoryMB: 10240
+      osDisk:
+        diskSizeGB: 200
   replicas: 3
 controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
   name: master
+  platform: 
+    vsphere:
+      cpus: 4
+      coresPerSocket: 2
+      memoryMB: 16384
+      osDisk:
+        diskSizeGB: 200
   replicas: 3
 metadata:
-  name: ocp4-vmware
+  creationTimestamp: null
+  name: walelab
 networking:
-  networkType: OVNKubernetes
   clusterNetwork:
   - cidr: 10.128.0.0/14
     hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16
+  networkType: OpenShiftSDN
   serviceNetwork:
   - 172.30.0.0/16
 platform:
   vsphere:
-    vCenter: vcenter.example.com
+    apiVIP: 192.168.1.21
+    cluster: walelab
+    datacenter: walelab
+    defaultDatastore: datastore2
+    ingressVIP: 192.168.1.20
+    network: VM Network
+    password: Iamgood@whatido1
     username: administrator@vsphere.local
-    password: VMwarePass123
-    datacenter: Datacenter
-    defaultDatastore: Datastore
-    network: VM_Network
-    apiVIP: 192.168.1.100
-    ingressVIP: 192.168.1.101
-pullSecret: '{"auths": {...}}'
+    vCenter: vcenter.smoad.net
+publish: External
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K2lhbW9sYXdhbGUyNDFhZTBka3BtbXdiNmp1a25rejE0YXJqZ3F6Zzo5TTFYWDlWMUU4R01TSTZaTlNKOTFaUVk0VDk4WjlERkhZMzZZNUtDRUREWVhNSVhIWjBBU1VTVVYzT1RTWDNL","email":"olawale24@yahoo.ca"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K2lhbW9sYXdhbGUyNDFhZTBka3BtbXdiNmp1a25rejE0YXJqZ3F6Zzo5TTFYWDlWMUU4R01TSTZaTlNKOTFaUVk0VDk4WjlERkhZMzZZNUtDRUREWVhNSVhIWjBBU1VTVVYzT1RTWDNL","email":"olawale24@yahoo.ca"},"registry.connect.redhat.com":{"auth":"NzY1NjA4OXx1aGMtMWFlMERrUE1NV0I2SnVLbkt6MTRhUkpnUXpnOmV5SmhiR2NpT2lKU1V6VXhNaUo5LmV5SnpkV0lpT2lJek9HVmtOamhsWWpJMU16VTBPV1k0T1RjeFpXUmtOak01WlRrNFlqbGxaQ0o5Lmk4dEVFNG5pUzFnZi1VZEd5dTNKWTBJM2lXQ3p1YXJMLW4tV0lxOXZDVkh2a3lhVGlyQ1ZsWG14NlNsT0h2MnNNazNmRXdwQjJ6TWZFWWx4aERkLVc1OW01VHlmSzV3N0Etd1d1Vk9hWlNib3pmMWJHQy05VkdIZXZtMmlhaGdIaEd1NDdRbmY4S0Zhb0Y2bWJKOHdRSHZSWjkwX1FWNEJlSlVBQ1hFMjdZYXZQVThIbFk5ekFlcmJMYnJETVZzbkFJUVEtTGNjZ1pEOU4ta1kyMWVwUWN3VHpRWG1iMmFFS2RtWGhqeWdXQlgta2ZaaERQVzZXVEp3SVRHMW5TQi1XYVljdjV5cThhSUZTT1J2eVFPSnFMNFItT3d6SGpybmxXa2RTT2RkYU84R0I0d1pZNWE5VXdIODNILTRpU2ZGd3lBMks4WUJ6RjQxTmdlZk5lOUVJZDE1MDJxd3lNMG1SNzBPUjFCcmYteXJqOWxmblljMG5xMmNieHZUbTFYZmgzaDRMRjl4S3FSMWJpem9rTjRGcDBSYnBRN1lmUjRUMzl3SkU3RmxPVXBlOE4xVnRLYnFyN20wUTVvVWRWVVdPRFBacmhsWUk3TnlaUGNTZ0Z4aXJDcU40UHRCbUk2QWpVYTEwYUpfMlZnM2EwVXFHU3lGSTBCWlc1NEVjU1RVNzhzVUhmbjZlVTdlYmVXMlpLNUxMWHdTMGNDYm10UWR1M01jTWg4b3FValZIX2IyWmpJWFpRanZIN0dCbTdiSFF5d3BuOTdlc0xLWUNWRW5UREtoNjJNTFd4R2JXMG91OTBTWnlTR3p5YmZVOUNhd25JSGhhNTU3UENveWd0Z3FUUGJEWW5fcVFla0dZNExfd3IzVDlPei1scnU4OHNmTFppMEVuRFFWVkJF","email":"olawale24@yahoo.ca"},"registry.redhat.io":{"auth":"NzY1NjA4OXx1aGMtMWFlMERrUE1NV0I2SnVLbkt6MTRhUkpnUXpnOmV5SmhiR2NpT2lKU1V6VXhNaUo5LmV5SnpkV0lpT2lJek9HVmtOamhsWWpJMU16VTBPV1k0T1RjeFpXUmtOak01WlRrNFlqbGxaQ0o5Lmk4dEVFNG5pUzFnZi1VZEd5dTNKWTBJM2lXQ3p1YXJMLW4tV0lxOXZDVkh2a3lhVGlyQ1ZsWG14NlNsT0h2MnNNazNmRXdwQjJ6TWZFWWx4aERkLVc1OW01VHlmSzV3N0Etd1d1Vk9hWlNib3pmMWJHQy05VkdIZXZtMmlhaGdIaEd1NDdRbmY4S0Zhb0Y2bWJKOHdRSHZSWjkwX1FWNEJlSlVBQ1hFMjdZYXZQVThIbFk5ekFlcmJMYnJETVZzbkFJUVEtTGNjZ1pEOU4ta1kyMWVwUWN3VHpRWG1iMmFFS2RtWGhqeWdXQlgta2ZaaERQVzZXVEp3SVRHMW5TQi1XYVljdjV5cThhSUZTT1J2eVFPSnFMNFItT3d6SGpybmxXa2RTT2RkYU84R0I0d1pZNWE5VXdIODNILTRpU2ZGd3lBMks4WUJ6RjQxTmdlZk5lOUVJZDE1MDJxd3lNMG1SNzBPUjFCcmYteXJqOWxmblljMG5xMmNieHZUbTFYZmgzaDRMRjl4S3FSMWJpem9rTjRGcDBSYnBRN1lmUjRUMzl3SkU3RmxPVXBlOE4xVnRLYnFyN20wUTVvVWRWVVdPRFBacmhsWUk3TnlaUGNTZ0Z4aXJDcU40UHRCbUk2QWpVYTEwYUpfMlZnM2EwVXFHU3lGSTBCWlc1NEVjU1RVNzhzVUhmbjZlVTdlYmVXMlpLNUxMWHdTMGNDYm10UWR1M01jTWg4b3FValZIX2IyWmpJWFpRanZIN0dCbTdiSFF5d3BuOTdlc0xLWUNWRW5UREtoNjJNTFd4R2JXMG91OTBTWnlTR3p5YmZVOUNhd25JSGhhNTU3UENveWd0Z3FUUGJEWW5fcVFla0dZNExfd3IzVDlPei1scnU4OHNmTFppMEVuRFFWVkJF","email":"olawale24@yahoo.ca"}}}'
 sshKey: |
-  ssh-rsa AAAAB3...user@domain
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDgpg4JxzwDlJOGKkX1+iLptrnjWP6s0fs7Zv0Wu194ooz/Et6vSb4RvHnBJmagCOXeFJSu9ja42roN/wHsIGIdm+VrYa1MqiCmRxZ+DuBJKVnJWXDDewcU8nctfvzg1cwNfpdb7KeBWNEURfqt+Y9I7X/Aa289RTL6BOEhEMQ8qwrmR0g+CZmWbz4Mh5EjaqeYM0S4YbCccySuM3icu8o9S2+k4ZGBLWHVwt2GlHoQ4S+as5zdkZAZ3uZ6F/kmsvnryqOidsJfGk4ERjFyvDOZe4qnGty2qt2/yZt4cAJ7I+oKEhB2EEFBQfibeFZAulH5YPwwAyYGzIUWePHJ8EEkl2GE6LoHuj24WnBL1drkaoSpDHWZwhH/ZS89LuILEd8poNkFHGkNsPimo1XMc5j4n2xfs17QnbW2q9tcdtiAIk0Sg/pVJERrBKBCJTJiYRrk82Pt+vD3l9Bk4C7nDVQa2aP5+Kt0pEZZo+UinqAVoBInAtyg22tmCfFQoLBQrz0= root@lab1.smoad.net

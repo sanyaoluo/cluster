@@ -4,18 +4,18 @@ metadata:
   name: ocp4-vmware
   namespace: clusters
 spec:
-  baseDomain: example.com
-  clusterName: ocp4-vmware
+  baseDomain: smoad.net`
+  clusterName: ocp4
   platform:
     vsphere:
-      vCenter: vcenter.example.com
+      vCenter: vcenter.smoad.net
       username: administrator@vsphere.local
-      password: VMwarePass123
+      password: Iamgood@whatido1
       datacenter: Datacenter
-      defaultDatastore: Datastore
+      defaultDatastore: Datastore2
       network: VM_Network
-      apiVIP: 192.168.1.100
-      ingressVIP: 192.168.1.101
+      apiVIP: 192.168.1.25
+      ingressVIP: 192.168.1.26
   pullSecretRef:
     name: pull-secret
   provisioning:
