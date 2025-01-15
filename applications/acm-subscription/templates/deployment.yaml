@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: advanced-cluster-management
+  namespace: {{ .Values.operatorNamespace }}
+spec:
+  channel: {{ .Values.channel }}
+  name: advanced-cluster-management
+  source: {{ .Values.source }}
+  sourceNamespace: {{ .Values.sourceNamespace }}

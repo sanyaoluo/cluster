@@ -1,0 +1,4 @@
+   operatorNamespace: open-cluster-management
+   channel: release-2.8
+   source: redhat-operators
+   sourceNamespace: openshift-marketplace
