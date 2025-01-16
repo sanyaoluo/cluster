@@ -2,13 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: acm-install
-  namespace: argocd
+  namespace: openshift-gitops
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-repo/acm-subscription.git'
-    targetRevision: HEAD
-    path: .
+    repoURL: 'https://github.com/sanyaoluo/cluster.git'
+    targetRevision: main
+    path: applications/acm-subscription
     helm:
       valueFiles:
         - values.yaml
