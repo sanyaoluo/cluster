@@ -2,3 +2,5 @@
    channel: release-2.12
    source: redhat-operators
    sourceNamespace: openshift-marketplace
+   multiclusterHub:
+     availabilityConfig: High
