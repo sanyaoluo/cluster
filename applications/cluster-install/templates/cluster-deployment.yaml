@@ -1,0 +1,24 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: {{ .Values.clusterName }}
+  namespace: {{ .Values.clusterName }}
+spec:
+  baseDomain: {{ .Values.baseDomain }}
+  clusterName: {{ .Values.clusterName }}
+  platform:
+    vsphere:
+      vCenter: {{ .Values.vmware.vCenter }}
+      datacenter: {{ .Values.vmware.datacenter }}
+      cluster: {{ .Values.vmware.cluster }}
+      datastore: {{ .Values.vmware.datastore }}
+      network: {{ .Values.vmware.network }}
+      template: {{ .Values.vmware.template }}
+      username: {{ .Values.vmware.username }}
+      password: {{ .Values.vmware.password }}
+  pullSecretRef:
+    name: pull-secret
+  sshKeyRef:
+    name: ssh-key
+  installConfigSecretRef:
+    name: install-config
