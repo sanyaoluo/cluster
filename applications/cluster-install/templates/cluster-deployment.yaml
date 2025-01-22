@@ -1,24 +1,24 @@
 apiVersion: hive.openshift.io/v1
 kind: ClusterDeployment
 metadata:
-  name: {{ .Values.clusterName }}
-  namespace: {{ .Values.clusterName }}
+  name: {{ .Values.clusterDeployment.name }}
+  namespace: {{ .Values.clusterDeployment.namespace }}
 spec:
-  baseDomain: {{ .Values.baseDomain }}
-  clusterName: {{ .Values.clusterName }}
+  baseDomain: {{ .Values.clusterDeployment.baseDomain }}
   platform:
-    vsphere:
-      vCenter: {{ .Values.vmware.vCenter }}
-      datacenter: {{ .Values.vmware.datacenter }}
-      cluster: {{ .Values.vmware.cluster }}
-      datastore: {{ .Values.vmware.datastore }}
-      network: {{ .Values.vmware.network }}
-      template: {{ .Values.vmware.template }}
-      username: {{ .Values.vmware.username }}
-      password: {{ .Values.vmware.password }}
+    vSphere:
+      vCenter: {{ .Values.clusterDeployment.platform.vSphere.vCenter }}
+      username: {{ .Values.clusterDeployment.platform.vSphere.username }}
+      password: {{ .Values.clusterDeployment.platform.vSphere.password }}
+      datacenter: {{ .Values.clusterDeployment.platform.vSphere.datacenter }}
+      cluster: {{ .Values.clusterDeployment.platform.vSphere.cluster }}
+      network: {{ .Values.clusterDeployment.platform.vSphere.network }}
+      folder: {{ .Values.clusterDeployment.platform.vSphere.folder }}
+      resourcePool: {{ .Values.clusterDeployment.platform.vSphere.resourcePool }}
+      template: {{ .Values.clusterDeployment.platform.vSphere.template }}
+  apiVIP: {{ .Values.clusterDeployment.apiVIP }}
+  ingressVIP: {{ .Values.clusterDeployment.ingressVIP }}
   pullSecretRef:
     name: pull-secret
-  sshKeyRef:
-    name: ssh-key
-  installConfigSecretRef:
-    name: install-config
+  sshKey:
+    {{ .Values.clusterDeployment.sshKey | nindent 6 }}
