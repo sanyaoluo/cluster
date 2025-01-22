@@ -1,0 +1,27 @@
+users:
+  - name: segun
+    password: password1
+    groups:
+      - devs
+      - testers
+  - name: feyi
+    password: password2
+    groups:
+      - admins
+
+groups:
+  - name: devs
+  - name: testers
+  - name: admins
+
+roleBindings:
+  - group: devs
+    role: edit
+    namespace: development
+  - group: testers
+    role: view
+    namespace: test
+  - group: admins
+    role: admin
+    namespace: production
+
