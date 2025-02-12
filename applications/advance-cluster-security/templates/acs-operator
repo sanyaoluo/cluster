@@ -1,5 +1,5 @@
 apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
+kind: ClusterServiceVersion
 metadata:
   name: rhacs-operator
   namespace: {{ .Values.global.namespace }}
