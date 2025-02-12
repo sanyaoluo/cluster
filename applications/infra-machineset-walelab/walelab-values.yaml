@@ -7,7 +7,7 @@ machineSet:
   infraNodeRole: "infra"
   vcenter:
     datastore: "/walelab/datastore/datastore2"
-    folder: "walelab/vm/walelab-mtqks"
+    folder: "//vm/walelab/vm/walelab-mtqks"
     resourcePool: "/walelab/host/walelab/Resources"
     network: "VM Network"
   instanceType: "medium"
