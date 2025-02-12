@@ -1,0 +1,12 @@
+apiVersion: platform.stackrox.io/v1alpha1
+kind: SecuredCluster
+metadata:
+  name: secured-cluster
+  namespace: stackrox
+spec:
+  clusterName: {{ .Values.acs.securedCluster.clusterName }}
+  admissionControl:
+    enabled: {{ .Values.acs.securedCluster.admissionControl }}
+  sensor:
+    service:
+      type: LoadBalancer

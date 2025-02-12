@@ -1,0 +1,9 @@
+namespace: stackrox
+acs:
+  central:
+    enabled: true
+    adminPassword: "SecureAdminPass123!"
+  securedCluster:
+    enabled: true
+    clusterName: "ocp4-cluster"
+    admissionControl: true

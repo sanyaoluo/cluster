@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: acs-application
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: "https://github.com/sanyaoluo/cluster.git"
+    path: .
+    targetRevision: main
+    helm:
+      valueFiles:
+        - walelab-values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: stackrox
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

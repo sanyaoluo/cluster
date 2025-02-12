@@ -1,0 +1,14 @@
+apiVersion: platform.stackrox.io/v1alpha1
+kind: Central
+metadata:
+  name: central
+  namespace: stackrox
+spec:
+  central:
+    exposure:
+      loadBalancer:
+        enabled: true
+  persistence:
+    persistentVolumeClaim:
+      claimName: central-db
+
