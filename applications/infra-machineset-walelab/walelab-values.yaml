@@ -8,7 +8,7 @@ machineSet:
   vcenter:
     datastore: "/walelab/datastore/datastore2"
     resourcePool: "/walelab/host/walelab/Resources"
-    folder: "//vm//walelab/vm/walelab-mtqks"
+    folder: "//walelab/vm/walelab-mtqks"
     network: "VM Network"
   failureDomains:
     - zone: "generated-zone"
