@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/sanyaoluo/cluster.git'
     targetRevision: main
-    path: infra-machineset-walelab
+    path: applications/infra-machineset-walelab
     helm:
       valueFiles:
         - walelab-values.yaml
