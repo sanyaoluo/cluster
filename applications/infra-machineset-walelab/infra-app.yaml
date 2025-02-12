@@ -1,21 +1,22 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: ocp4-cluster
+  name: infra-machineset
   namespace: openshift-gitops
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/sanyaoluo/cluster.git'
+    repoURL: 'https://github.com/your-org/helm-charts.git'
     targetRevision: main
-    path: applications/cluster-install
+    path: openshift-infra-machineset
     helm:
       valueFiles:
-        - values.yaml
+        - walelab-values.yaml
   destination:
-    server: 'https://kubernetes.default.svc'
-    namespace: ocp4-cluster
+    server: https://kubernetes.default.svc
+    namespace: openshift-machine-api
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
+

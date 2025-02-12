@@ -1,0 +1,8 @@
+apiVersion: kibana.openshift.io/v1
+kind: Kibana
+metadata:
+  name: kibana
+  namespace: {{ .Values.logging.namespace }}
+spec:
+  managementState: Managed
+  replicas: {{ .Values.logging.kibana.replicas }}

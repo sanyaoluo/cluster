@@ -1,0 +1,17 @@
+clusterName: walelab-2pk5h
+namespace: openshift-machine-api
+
+machineSet:
+  name: infra-machineset
+  replicas: 3
+  infraNodeRole: "infra"
+  vcenter:
+    datastore: "/walelab/datastore/datastore2"
+    folder: "/walelab/vm/walelab-2pk5h"
+    resourcePool: "/walelab/host/walelab/Resources"
+    network: "VM Network"
+  instanceType: "medium"
+  failureDomains:
+    - zone: "generated-zone"
+      computeCluster: "/walelab/host/walelab"
+

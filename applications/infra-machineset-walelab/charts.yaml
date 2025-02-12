@@ -1,0 +1,5 @@
+apiVersion: v2
+name: openshift-infra-machineset
+description: A Helm chart to deploy OpenShift infra MachineSet on VMware
+version: 0.1.0
+appVersion: "4.x"

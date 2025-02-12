@@ -1,0 +1,16 @@
+apiVersion: logging.openshift.io/v1
+kind: ClusterLogging
+metadata:
+  name: instance
+  namespace: {{ .Values.logging.namespace }}
+spec:
+  managementState: {{ .Values.logging.clusterLogging.managementState }}
+  logStore:
+    type: {{ .Values.logging.clusterLogging.logStore.type }}
+    retentionPolicy: {}
+  collection:
+    logs:
+      type: {{ .Values.logging.clusterLogging.collection.logs.type }}
+  visualization:
+    type: {{ .Values.logging.clusterLogging.visualization.type }}
+
