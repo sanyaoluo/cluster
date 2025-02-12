@@ -51,6 +51,6 @@ spec:
           workspace:
             datacenter: "{{ .Values.machineSet.vcenter.datacenter }}"
             datastore: "{{ .Values.machineSet.vcenter.datastore }}"
-            folder: /walelab/vm/walelab-mtqks 
+            folder: "{{ .Values.machineSet.vcenter.folder }}" 
             resourcePool: "{{ .Values.machineSet.vcenter.resourcePool }}"
             server: vcenter.smoad.net
