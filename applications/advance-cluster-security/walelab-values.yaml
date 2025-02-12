@@ -1,9 +1,19 @@
-namespace: stackrox
-acs:
-  central:
+global:
+  namespace: stackrox
+
+operator:
+  channel: "stable"
+  installPlanApproval: "Automatic"
+
+central:
+  create: true
+  persistence:
     enabled: true
-    adminPassword: "SecureAdminPass123!"
-  securedCluster:
+    storageClass: "gp2"
+  expose:
     enabled: true
-    clusterName: "ocp4-cluster"
-    admissionControl: true
+    route: true
+
+securedCluster:
+  create: true
+

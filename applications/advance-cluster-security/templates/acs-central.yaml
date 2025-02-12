@@ -1,14 +1,14 @@
+{{- if .Values.central.create }}
 apiVersion: platform.stackrox.io/v1alpha1
 kind: Central
 metadata:
-  name: central
-  namespace: stackrox
+  name: stackrox-central
+  namespace: {{ .Values.global.namespace }}
 spec:
-  central:
-    exposure:
-      loadBalancer:
-        enabled: true
   persistence:
     persistentVolumeClaim:
       claimName: central-db
+  route:
+    enabled: {{ .Values.central.expose.route }}
+{{- end }}
 

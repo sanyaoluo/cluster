@@ -1,12 +1,13 @@
+{{- if .Values.securedCluster.create }}
 apiVersion: platform.stackrox.io/v1alpha1
 kind: SecuredCluster
 metadata:
   name: secured-cluster
-  namespace: stackrox
+  namespace: {{ .Values.global.namespace }}
 spec:
-  clusterName: {{ .Values.acs.securedCluster.clusterName }}
+  auditLogs:
+    collection: Auto
   admissionControl:
-    enabled: {{ .Values.acs.securedCluster.admissionControl }}
-  sensor:
-    service:
-      type: LoadBalancer
+    bypass: BreakGlassAnnotation
+    enabled: true
+{{- end }}
