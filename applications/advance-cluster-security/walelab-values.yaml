@@ -2,7 +2,7 @@ global:
   namespace: stackrox
 
 operator:
-  channel: "stable"
+  channel: "latest"
   installPlanApproval: "Automatic"
 
 central:
