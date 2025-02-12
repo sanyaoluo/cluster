@@ -6,9 +6,9 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: 'https://github.com/your-org/helm-charts.git'
+    repoURL: 'https://github.com/sanyaoluo/cluster.git'
     targetRevision: main
-    path: openshift-infra-machineset
+    path: infra-machineset-walelab
     helm:
       valueFiles:
         - walelab-values.yaml
