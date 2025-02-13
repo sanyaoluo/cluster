@@ -14,4 +14,3 @@ spec:
   name: {{ .Values.operator.name }}
   source: {{ .Values.operator.source }}
   sourceNamespace: {{ .Values.operator.sourceNamespace }}
-  startingCSV: rhacs-operator.v4.6.2
