@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: acm-install
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sanyaoluo/cluster.git'
+    targetRevision: main
+    path: applications/acs-central
+    helm:
+      valueFiles:
+        - walelab-central-values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: stackrox
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

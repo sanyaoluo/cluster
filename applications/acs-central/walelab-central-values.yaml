@@ -1,0 +1,15 @@
+central:
+  expose: Route  # Options: LoadBalancer, NodePort, Route
+  adminPasswordSecret: central-htpasswd
+
+persistence:
+  enabled: true
+  storageClass: thin-csi  # Modify based on your storage provider
+
+resources:
+  requests:
+    memory: "4Gi"
+    cpu: "2"
+  limits:
+    memory: "8Gi"
+    cpu: "4"
