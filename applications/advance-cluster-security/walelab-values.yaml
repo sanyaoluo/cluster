@@ -1,19 +1,7 @@
-global:
-  namespace: stackrox
-
+namespace: stackrox
 operator:
-  channel: "stable"
-  installPlanApproval: "Automatic"
-
-central:
-  create: true
-  persistence:
-    enabled: true
-    storageClass: "thin-csi"
-  expose:
-    enabled: true
-    route: true
-
-securedCluster:
-  create: true
+  name: rhacs-operator
+  source: redhat-operators
+  sourceNamespace: openshift-marketplace
+  channel: stable
 
