@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm-install
+  name: acm-central
   namespace: openshift-gitops
 spec:
   project: default
