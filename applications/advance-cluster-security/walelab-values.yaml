@@ -1,7 +1,7 @@
 namespace: stackrox
 operator:
-  name: "Advanced Cluster Security for Kubernetes"
+  name: rhacs-operator
   source: redhat-operators
-  sourceNamespace: openshift-marketplace
+  sourceNamespace: redhat-marketplace
   channel: stable
 
