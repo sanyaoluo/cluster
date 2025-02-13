@@ -14,7 +14,7 @@ spec:
         - walelab-values.yaml
   destination:
     server: https://kubernetes.default.svc
-    namespace: stackrox
+    namespace: openshift-operators
   syncPolicy:
     automated:
       prune: true
