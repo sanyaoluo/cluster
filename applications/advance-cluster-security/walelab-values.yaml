@@ -1,6 +1,6 @@
 namespace: stackrox
 operator:
-  name: Advanced Cluster Security for Kubernetes
+  name: "Advanced Cluster Security for Kubernetesi"
   source: redhat-operators
   sourceNamespace: openshift-marketplace
   channel: stable
