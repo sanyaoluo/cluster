@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: compliance-operator
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sanyaoluo/cluster.git'
+    targetRevision: main
+    path: applications/compliance-operator
+    helm:
+      valueFiles:
+        - walelab-compliance-values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: openshift-compliance
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+  syncOptions:
+    - CreateNamespace=true

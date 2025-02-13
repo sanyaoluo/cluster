@@ -1,0 +1,12 @@
+subscription:
+  name: compliance-operator
+  namespace: openshift-compliance
+  source: redhat-operators
+  channel: stable
+  installPlanApproval: Automatic
+
+operatorGroup:
+  create: true
+  name: compliance-operator-group
+  namespace: openshift-compliance
+
