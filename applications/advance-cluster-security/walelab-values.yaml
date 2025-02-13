@@ -1,4 +1,4 @@
-namespace: rhacs-operator
+namespace: stackrox
 operator:
   name: rhacs-operator
   source: redhat-operators
