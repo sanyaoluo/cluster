@@ -2,6 +2,6 @@ namespace: stackrox
 operator:
   name: rhacs-operator
   source: redhat-operators
-  sourceNamespace: redhat-operators
+  sourceNamespace: redhat-marketplace
   channel: stable
 
