@@ -1,5 +1,6 @@
 namespace: stackrox
 operator:
+  operatornamespace: openshift-operators
   name: rhacs-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
