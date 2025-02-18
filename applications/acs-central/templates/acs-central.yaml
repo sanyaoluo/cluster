@@ -32,6 +32,10 @@ spec:
       persistence:
         persistentVolumeClaim:
           claimName: central-db
+      resources:
+        requests:
+          cpu: 2
+          memory: 2
     persistence:
       persistentVolumeClaim:
         claimName: stackrox-db
