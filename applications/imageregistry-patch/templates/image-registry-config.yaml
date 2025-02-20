@@ -1,0 +1,9 @@
+apiVersion: operator.openshift.io/v1
+kind: Config
+metadata:
+  name: cluster
+  namespace: openshift-image-registry
+spec:
+  managementState: {{ .Values.managementState }}
+  nodeSelector:
+    {{- toYaml .Values.nodeSelector | nindent 4 }}

@@ -1,0 +1,4 @@
+managementState: Managed
+nodeSelector:
+  node-role.kubernetes.io/infra: ""
+
