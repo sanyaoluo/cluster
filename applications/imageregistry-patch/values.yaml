@@ -1,4 +1,7 @@
 managementState: "Managed"
+rolloutStrategy: "Recreate"
+replicas: 1
 tolerations:
   - key: "node-role.kubernetes.io/infra"
     effect: "NoSchedule"
+

@@ -5,6 +5,8 @@ metadata:
   namespace: openshift-image-registry
 spec:
   managementState: {{ .Values.managementState }}
+  rolloutStrategy: {{ .Values.rolloutStrategy }}
+  replicas: {{ .Values.replicas }}
   nodeSelector:
     node-role.kubernetes.io/infra: ""
   tolerations:
