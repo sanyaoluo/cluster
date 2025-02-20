@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm-install
+  name: ingress-patch
   namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/sanyaoluo/cluster.git'
     targetRevision: main
-    path: applications/acm-subscription
+    path: applications/ingress-patch
     helm:
       valueFiles:
         - values.yaml
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: open-cluster-management
+    namespace: openshift-ingress-operator
   syncPolicy:
     automated:
       prune: true
