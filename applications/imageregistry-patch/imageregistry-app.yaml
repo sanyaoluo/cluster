@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: acm-install
+  name: image-registry-patch
   namespace: openshift-gitops
 spec:
   project: default
   source:
     repoURL: 'https://github.com/sanyaoluo/cluster.git'
     targetRevision: main
-    path: applications/imageregistry-app.yaml
+    path: applications/imageregistry-patch
     helm:
       valueFiles:
         - values.yaml
