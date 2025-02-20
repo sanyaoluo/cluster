@@ -1,5 +1,4 @@
 managementState: "Managed"
 tolerations:
   - key: "node-role.kubernetes.io/infra"
-    operator: "Exists"
     effect: "NoSchedule"
