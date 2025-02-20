@@ -1,0 +1,12 @@
+apiVersion: operator.openshift.io/v1
+kind: IngressController
+metadata:
+  name: {{ .Values.ingressController.name }}
+  namespace: {{ .Values.ingressController.namespace }}
+spec:
+  nodePlacement:
+    nodeSelector:
+      matchLabels:
+        {{- toYaml .Values.ingressController.nodePlacement.nodeSelector.matchLabels | nindent 8 }}
+    tolerations:
+      {{- toYaml .Values.ingressController.nodePlacement.tolerations | nindent 6 }}
