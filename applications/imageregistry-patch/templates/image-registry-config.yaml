@@ -6,4 +6,6 @@ metadata:
 spec:
   managementState: {{ .Values.managementState }}
   nodeSelector:
-    {{- toYaml .Values.nodeSelector | nindent 4 }}
+    node-role.kubernetes.io/infra: ""
+  tolerations:
+    {{- toYaml .Values.tolerations | nindent 4 }}

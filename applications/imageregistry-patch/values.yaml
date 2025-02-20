@@ -1,4 +1,5 @@
-managementState: Managed
-nodeSelector:
-  node-role.kubernetes.io/infra: ""
-
+managementState: "Managed"
+tolerations:
+  - key: "node-role.kubernetes.io/infra"
+    operator: "Exists"
+    effect: "NoSchedule"
