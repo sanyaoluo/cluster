@@ -14,7 +14,7 @@ logging:
   fluentd:
     enabled: true
     bufferStorageVolume:
-      size: 100Gi
+      size: 50Gi
   clusterLogging:
     managementState: Managed
     logStore:

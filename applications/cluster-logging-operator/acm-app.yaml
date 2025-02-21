@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: cluster-logging-operator
+  namespace: openshift-gitops
+spec:
+  project: default
+  source:
+    repoURL: 'https://github.com/sanyaoluo/cluster.git'
+    targetRevision: main
+    path: applications/acm-subscription
+    helm:
+      valueFiles:
+        - values.yaml
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: openshift-operators 
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

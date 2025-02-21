@@ -1,0 +1,18 @@
+operatorgroup:
+  namespace: openshift-logging
+
+subscriptions:
+  elasticsearch:
+    channel: stable
+    installPlanApproval: Automatic
+    name: elasticsearch-operator
+    source: redhat-operators
+    sourceNamespace: openshift-marketplace
+
+  logging:
+    channel: stable
+    installPlanApproval: Automatic
+    name: cluster-logging
+    source: redhat-operators
+    sourceNamespace: openshift-marketplace
+
