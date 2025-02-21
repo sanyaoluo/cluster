@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/sanyaoluo/cluster.git'
     targetRevision: main
-    path: applications/acm-subscription
+    path: applications/cluster-logging-operator
     helm:
       valueFiles:
         - values.yaml
