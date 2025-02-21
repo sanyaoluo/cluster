@@ -3,9 +3,10 @@ namespace: openshift-machine-api
 
 machineSet:
   name: infra-machineset
-  replicas: 3
+  replicas: 5
   infraNodeRole: "infra"
   vcenter:
+    datacenter: walelab
     datastore: "/walelab/datastore/datastore2"
     resourcePool: "/walelab/host/walelab/Resources"
     network: "VM Network"
