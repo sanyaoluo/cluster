@@ -1,0 +1,44 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  name: 99-worker-ovn-resolv
+  labels:
+    machineconfiguration.openshift.io/role: worker
+spec:
+  config:
+    ignition:
+      version: 3.2.0
+    storage:
+      files:
+        - path: /etc/NetworkManager/conf.d/99-dns-override.conf
+          mode: 0644
+          contents:
+            source: |
+              [main]
+              dns=none
+        - path: /etc/NetworkManager/dispatcher.d/50-resolv
+          mode: 0755
+          contents:
+            source: |
+              #!/bin/bash
+              if [ "$2" = "up" ]; then
+                echo "nameserver 192.168.1.238" > /etc/resolv.conf
+                echo "search example.com" >> /etc/resolv.conf
+              fi
+    systemd:
+      units:
+        - name: update-resolv.service
+          enabled: true
+          contents: |
+            [Unit]
+            Description=Update resolv.conf on boot
+            After=network-online.target
+            Wants=network-online.target
+
+            [Service]
+            Type=oneshot
+            ExecStart=/bin/bash -c 'echo "nameserver 192.168.1.238" > /etc/resolv.conf && echo "search example.com" >> /etc/resolv.conf'
+            RemainAfterExit=yes
+
+            [Install]
+            WantedBy=multi-user.target
