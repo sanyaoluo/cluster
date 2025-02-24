@@ -19,3 +19,5 @@ spec:
     automated:
       prune: true
       selfHeal: true
+    syncOptions:
+      - CreateNamespace=true  # Ensures namespace is created if it doesn't exist
