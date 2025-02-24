@@ -1,16 +1,27 @@
 apiVersion: logging.openshift.io/v1
 kind: ClusterLogging
 metadata:
-  name: instance
-  namespace: {{ .Values.logging.namespace }}
+  name: {{ .Values.clusterLogging.name }}
+  namespace: {{ .Values.clusterLogging.namespace }}
 spec:
-  managementState: {{ .Values.logging.clusterLogging.managementState }}
-  logStore:
-    type: {{ .Values.logging.clusterLogging.logStore.type }}
-    retentionPolicy: {}
   collection:
-    logs:
-      type: {{ .Values.logging.clusterLogging.collection.logs.type }}
+    type: vector
+  logStore:
+    elasticsearch:
+      resources:
+        requests:
+          memory: 2Gi
+      storage:
+        size: {{ .Values.clusterLogging.logStore.storageSize }}
+      nodeCount: {{ .Values.clusterLogging.logStore.nodeCount }}
+      redundancyPolicy: SingleRedundancy
+    retentionPolicy:
+      application:
+        maxAge: {{ .Values.clusterLogging.retention.applicationMaxAge }}
+    type: elasticsearch
   visualization:
-    type: {{ .Values.logging.clusterLogging.visualization.type }}
+    kibana:
+      replicas: {{ .Values.clusterLogging.visualization.kibanaReplicas }}
+    type: kibana
+  managementState: Managed
 

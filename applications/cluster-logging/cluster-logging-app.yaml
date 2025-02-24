@@ -8,10 +8,10 @@ spec:
   source:
     repoURL: 'https://github.com/sanyaoluo/cluster.git'
     targetRevision: main
-    path: applications/acm-subscription
+    path: applications/cluster-logging
     helm:
       valueFiles:
-        - values.yaml
+        - cluster-logging-app.yaml
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: openshift-logging

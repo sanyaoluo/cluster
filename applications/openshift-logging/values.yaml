@@ -1,0 +1,14 @@
+clusterlogging:
+  enabled: true
+  namespace: openshift-logging
+
+elasticsearch:
+  enabled: true
+  replicas: 3
+
+kibana:
+  enabled: true
+  replicas: 2
+
+fluentd:
+  enabled: true

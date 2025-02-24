@@ -1,27 +1,10 @@
-logging:
+clusterLogging:
+  name: instance
   namespace: openshift-logging
-  elasticsearch:
+  logStore:
+    storageSize: 200G
     nodeCount: 3
-    resources:
-      requests:
-        memory: 8Gi
-        cpu: 4
-      limits:
-        memory: 16Gi
-        cpu: 8
-  kibana:
-    replicas: 1
-  fluentd:
-    enabled: true
-    bufferStorageVolume:
-      size: 50Gi
-  clusterLogging:
-    managementState: Managed
-    logStore:
-      type: elasticsearch
-    collection:
-      logs:
-        type: fluentd
-    visualization:
-      type: kibana
-
+  retention:
+    applicationMaxAge: 7d
+  visualization:
+    kibanaReplicas: 1
